@@ -3,18 +3,19 @@ body {
     height: 100vh;
     background: rgb(247,135,100);
     background: no-repeat linear-gradient(132deg, rgba(247,135,100,1) 0%, rgba(9,9,121,1) 100%);
+    display: flex;
+    color: white;
 }
 
 .terminal {
     border: 2px solid black;
     border-radius: 5px;
-    padding: 0.2rem;
     margin:auto;
-    margin-top: 5px;
     width: 50vw;
     height: 50vh;
     display: flex;
     flex-direction: column;
+    background-color: #131b23;
     
 }
 
@@ -25,6 +26,7 @@ body {
     display: flex;
     justify-content: space-between;
     border-radius: 5px;
+    background-color: #090d11;
 
     
 }
@@ -45,7 +47,7 @@ body {
 }
 
 .fake-button {
-    border: 2px solid black;
+    border: 2px solid white;
     padding: 5px;
     margin: 5px;
     width: 0.5rem;
@@ -62,7 +64,7 @@ body {
 }
 
 .name {
-    color: blue;
+    color: rgb(114, 114, 212);
     
 }
 
@@ -70,6 +72,6 @@ body {
     margin-left: 0.2rem;
     flex-grow: 1;
     border: none;
-    
+    background-color: transparent;
 }
 
