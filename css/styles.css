@@ -1,6 +1,9 @@
-/* body {
-    color: white;
-} */
+body {
+    overflow: hidden;
+    height: 100vh;
+    background: rgb(247,135,100);
+    background: no-repeat linear-gradient(132deg, rgba(247,135,100,1) 0%, rgba(9,9,121,1) 100%);
+}
 
 .terminal {
     border: 2px solid black;
