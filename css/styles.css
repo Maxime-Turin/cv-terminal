@@ -59,11 +59,14 @@
 }
 
 .name {
-    color: green;
+    color: blue;
     
 }
 
 .command-input {
     margin-left: 0.2rem;
     flex-grow: 1;
+    border: none;
+    
 }
+
