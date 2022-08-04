@@ -5,7 +5,10 @@ body {
     background: no-repeat linear-gradient(132deg, rgba(247,135,100,1) 0%, rgba(9,9,121,1) 100%);
     display: flex;
     color: white;
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 1.2rem;
 }
+
 
 .terminal {
     border: 2px solid black;
@@ -20,25 +23,30 @@ body {
 }
 
 .terminal__header {
-    border: 2px solid black;
+    border-bottom: 2px solid black;
     padding: 0.2rem;
     margin: none;
     display: flex;
     justify-content: space-between;
-    border-radius: 5px;
+    border-radius: 5px, 5px;
     background-color: #090d11;
 
     
 }
 
 .terminal__header__logo {
-    
-
+    padding: 0.5rem;
+    margin: 5px;
+    width: 2rem;
+    height: 2rem;
+    background: url("../img/termimaxLogo.png") center no-repeat;
+    background-size: 2rem;
 }
 
 .terminal__header__title {
-    
-    
+    font-weight: bold;
+    align-self: center;
+    font-size: 1.5rem;
 }
 
 .terminal__header__buttons {
@@ -48,10 +56,23 @@ body {
 
 .fake-button {
     border: 2px solid white;
-    padding: 5px;
+    border-radius: 50%;
+    padding: 0.5rem;
     margin: 5px;
     width: 0.5rem;
     height: 0.5rem;
+}
+
+.fake-button__reduce {
+    background-color: green;
+}
+
+.fake-button__enlarge {
+    background-color: orangered;
+}
+
+.fake-button__close {
+    background-color: red;
 }
 
 .terminal__body {
@@ -73,5 +94,27 @@ body {
     flex-grow: 1;
     border: none;
     background-color: transparent;
+    font-family: inherit; 
+    font-size: inherit;   
 }
 
+.command-input:focus {
+    color: #fff;
+    border: none;
+    border-color: transparent;
+    outline: none;
+    background-color:transparent;
+    width: 75%;
+    caret-color: transparent;
+}
+
+.command-input-placement {
+    position: relative;
+    display: flex;
+}
+
+.command-input-caret {
+    position: absolute;
+    border: 2px solid white;
+    margin-left: 0.2rem;
+}
