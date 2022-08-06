@@ -1,8 +1,48 @@
-// TODO : Terminal-caret like
+const commandDetails = [
+  {
+    command: 'help',
+    html: '',
+  },
+  {
+    command: 'cv',
+    html: '',
+  },
+  {
+    command: 'à-propos',
+    html: '',
+  },
+  {
+    command: 'projects',
+    html: '',
+  },
+  {
+    command: 'theme',
+    html: '',
+  },
+  {
+    command: 'clear',
+    html: '',
+  },
+  {
+    command: 'rainbow',
+    html: '',
+  },
+  {
+    command: 'konamicode',
+    html: '',
+  },
+  {
+    command: 'music',
+    html: '',
+  },
+];
 
 const app = {
+  caractCount: 0,
+
   init() {
     app.makeTerminalInput();
+    app.listeners();
   },
 
   // Draw 'maxime@turin' -> The input caret and the input
@@ -30,16 +70,55 @@ const app = {
     commandInputPlacement.appendChild(commandInput);
   },
   // Change caret function after focus => change terminal caret style after focus
+  makeCaretFocused() {
+    document.querySelector('.command-input').focus();
+  },
 
   // Typing function : Move the caret when typing
+  typingInCommandInput(event) {
+    // TODO : add exeptions (suppr, maj, tab, etc)
+    // Get caret div
+    const caretPosition = document.querySelector('.command-input-caret');
+    const inputValue = document.querySelector('.command-input').value;
+    console.log(event.keyCode);
+    // Handle backspace
+    if (event.keyCode === 13) {
+      app.commandInstructionHandler(inputValue);
+    } else if (event.code === 'Backspace' && app.caractCount > 0) {
+      app.caractCount -= 1;
+      caretPosition.style.transform = `translateX(${(app.caractCount * 0.6).toString()}rem)`;
+    } else if (event.code === 'Backspace' && app.caractCount === 0) {
+      app.caractCount = 0;
+    } else {
+      // Move when typing
+      app.caractCount += 1;
+      caretPosition.style.transform = `translateX(${(app.caractCount * 0.6).toString()}rem)`;
+    }
+  },
+
+  // Read the input and handle commands
+  commandInstructionHandler(inputValue) {
+    // remove spaces from the input value
+    const command = inputValue.split(' ').join('');
+    console.log(command);
+    console.log(commandDetails);
+    // Put the input text in a div right after firstname@lastname
+    // delete command-input & command-input-caret
+    // draw with inputValue
+
+    // Find what to print in a printList (json) + default error and help
+    // Draw a new firstname@lastname > input
+  },
+
+  // Events list
+  listeners() {
+    // Event listener to add focus on terminal input
+    document.querySelector('.terminal__body').addEventListener('click', app.makeCaretFocused);
+    // Event listener when typing in the terminal input
+    document.querySelector('.command-input').addEventListener('keydown', app.typingInCommandInput);
+  },
 };
 
 // TODO : Instruction when submit
-
-// Put the input text in a div right after firstname@lastname
-
-// Find what to print in a printList (json) => function printHandler(instruction) ?
-
-// Draw a new firstname@lastname > input
 
 document.addEventListener('DOMContentLoaded', app.init);

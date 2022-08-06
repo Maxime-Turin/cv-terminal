@@ -82,6 +82,7 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    cursor: text;
 }
 
 .name {
@@ -115,6 +116,7 @@ body {
 
 .command-input-caret {
     position: absolute;
+    transform: translateX(0rem);
     border: 2px solid white;
     margin-left: 0.2rem;
 }
