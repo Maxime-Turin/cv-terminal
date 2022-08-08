@@ -9,29 +9,28 @@ body {
     font-size: 1.2rem;
 }
 
-
 .terminal {
-    border: 2px solid black;
+    border: 0.15rem solid black;
     border-radius: 5px;
     margin:auto;
-    width: 50vw;
-    height: 50vh;
+    width: 70vw;
+    height: 70vh;
     display: flex;
     flex-direction: column;
     background-color: #131b23;
+    overflow-x: hidden;
     
 }
 
+/* CSS Terminal header */
 .terminal__header {
-    border-bottom: 2px solid black;
+    border-bottom: 0.15rem solid black;
     padding: 0.2rem;
     margin: none;
     display: flex;
     justify-content: space-between;
     border-radius: 5px, 5px;
-    background-color: #090d11;
-
-    
+    background-color: #090d11; 
 }
 
 .terminal__header__logo {
@@ -55,10 +54,10 @@ body {
 }
 
 .fake-button {
-    border: 2px solid white;
+    border: 0.15rem solid white;
     border-radius: 50%;
     padding: 0.5rem;
-    margin: 5px;
+    margin: 0.5rem;
     width: 0.5rem;
     height: 0.5rem;
 }
@@ -75,14 +74,31 @@ body {
     background-color: red;
 }
 
+/*CSS terminal body*/
 .terminal__body {
     padding: 0.2rem;
     margin: none;
     flex-grow: 1;
+    overflow-y: scroll;
+    cursor: text;
+}
+
+.terminal__body::-webkit-scrollbar {
+    background-color: #090d11;
+}
+
+.terminal__body::-webkit-scrollbar-thumb {
+    background-color: #131b23;
+    box-shadow: inset 0.15rem 0px 3px 1px #090d11;
+}
+
+/*CSS command input*/
+.terminal__body__input {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    cursor: text;
+    margin: 0.2rem 0 0.2rem 0;
+
 }
 
 .name {
@@ -117,6 +133,100 @@ body {
 .command-input-caret {
     position: absolute;
     transform: translateX(0rem);
-    border: 2px solid white;
+    border: 0.15rem solid white;
+    margin-left: 0.2rem;
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+/*CSS command history*/
+.terminal_history {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0.2rem 0 0.2rem 0;
+}
+
+.name_history {
+    color: rgb(114, 114, 212);
+}
+
+.command_history {
+    color: #c8553d;
     margin-left: 0.2rem;
 }
+
+/*CSS on a-propos*/
+.a-propos__links {
+    display: flex;
+}
+
+.a-propos__links > li {
+    padding: 0.5rem;
+}
+
+.a-propos__text {
+    margin: 0.5rem;
+}
+
+/*CSS on CV*/
+
+.cv__container {
+    padding-left: 1rem;
+}
+
+/*CSS on html elements*/
+h2 {
+    font-size: 2rem;
+    padding: 0.4rem;
+}
+
+strong {
+    color: rgb(231, 64, 64);
+}
+
+a {
+    text-decoration: underline;
+}
+
+/*Table*/
+table {
+    margin: 1rem 0 1rem 1rem;
+    text-align: center;
+}
+
+th {
+    border: 0.15rem solid #474747;
+    padding: 0.5rem;
+}
+
+td {
+    border: 0.15rem solid #474747;
+    padding: 0.5rem;
+}
+
+.info {
+    opacity: 0.33;
+}
+
+@media screen and (max-width: 1200px) {
+    .terminal {
+        width: 90vw;
+        height: 90vh;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .terminal {
+        width: 95vw;
+        height: 95vh;
+    }
+}
+
+
+
