@@ -1,0 +1,232 @@
+body {
+    overflow: hidden;
+    height: 100vh;
+    background: rgb(247,135,100);
+    background: no-repeat linear-gradient(132deg, rgba(247,135,100,1) 0%, rgba(9,9,121,1) 100%);
+    display: flex;
+    color: white;
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 1.2rem;
+}
+
+.terminal {
+    border: 0.15rem solid black;
+    border-radius: 5px;
+    margin:auto;
+    width: 70vw;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #131b23;
+    overflow-x: hidden;
+    
+}
+
+/* CSS Terminal header */
+.terminal__header {
+    border-bottom: 0.15rem solid black;
+    padding: 0.2rem;
+    margin: none;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px, 5px;
+    background-color: #090d11; 
+}
+
+.terminal__header__logo {
+    padding: 0.5rem;
+    margin: 5px;
+    width: 2rem;
+    height: 2rem;
+    background: url("../img/termimaxLogo.png") center no-repeat;
+    background-size: 2rem;
+}
+
+.terminal__header__title {
+    font-weight: bold;
+    align-self: center;
+    font-size: 1.5rem;
+}
+
+.terminal__header__buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.fake-button {
+    border: 0.15rem solid white;
+    border-radius: 50%;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+.fake-button__reduce {
+    background-color: green;
+}
+
+.fake-button__enlarge {
+    background-color: orangered;
+}
+
+.fake-button__close {
+    background-color: red;
+}
+
+/*CSS terminal body*/
+.terminal__body {
+    padding: 0.2rem;
+    margin: none;
+    flex-grow: 1;
+    overflow-y: scroll;
+    cursor: text;
+}
+
+.terminal__body::-webkit-scrollbar {
+    background-color: #090d11;
+}
+
+.terminal__body::-webkit-scrollbar-thumb {
+    background-color: #131b23;
+    box-shadow: inset 0.15rem 0px 3px 1px #090d11;
+}
+
+/*CSS command input*/
+.terminal__body__input {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0.2rem 0 0.2rem 0;
+
+}
+
+.name {
+    color: rgb(114, 114, 212);
+    
+}
+
+.command-input {
+    margin-left: 0.2rem;
+    flex-grow: 1;
+    border: none;
+    background-color: transparent;
+    font-family: inherit; 
+    font-size: inherit;   
+}
+
+.command-input:focus {
+    color: #fff;
+    border: none;
+    border-color: transparent;
+    outline: none;
+    background-color:transparent;
+    width: 75%;
+    caret-color: transparent;
+}
+
+.command-input-placement {
+    position: relative;
+    display: flex;
+}
+
+.command-input-caret {
+    position: absolute;
+    transform: translateX(0rem);
+    border: 0.15rem solid white;
+    margin-left: 0.2rem;
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+/*CSS command history*/
+.terminal_history {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0.2rem 0 0.2rem 0;
+}
+
+.name_history {
+    color: rgb(114, 114, 212);
+}
+
+.command_history {
+    color: #c8553d;
+    margin-left: 0.2rem;
+}
+
+/*CSS on a-propos*/
+.a-propos__links {
+    display: flex;
+}
+
+.a-propos__links > li {
+    padding: 0.5rem;
+}
+
+.a-propos__text {
+    margin: 0.5rem;
+}
+
+/*CSS on CV*/
+
+.cv__container {
+    padding-left: 1rem;
+}
+
+/*CSS on html elements*/
+h2 {
+    font-size: 2rem;
+    padding: 0.4rem;
+}
+
+strong {
+    color: rgb(231, 64, 64);
+}
+
+a {
+    text-decoration: underline;
+}
+
+/*Table*/
+table {
+    margin: 1rem 0 1rem 1rem;
+    text-align: center;
+}
+
+th {
+    border: 0.15rem solid #474747;
+    padding: 0.5rem;
+}
+
+td {
+    border: 0.15rem solid #474747;
+    padding: 0.5rem;
+}
+
+.info {
+    opacity: 0.33;
+}
+
+@media screen and (max-width: 1200px) {
+    .terminal {
+        width: 90vw;
+        height: 90vh;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .terminal {
+        width: 95vw;
+        height: 95vh;
+    }
+}
+
+
+
