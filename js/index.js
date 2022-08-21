@@ -4,7 +4,7 @@ const commandDetails = [
     html: `<ul>
             <li><strong>a-propos</strong>: Qui suis-je ?</li>
             <li><strong>projets</strong>: Liste des projets sur lesquelles j'ai travaillé</li>
-            <li><strong>theme</strong>: Changer le thème du terminal</li>
+            <li><strong>theme &#60option&#62</strong>: Changer le thème du terminal</li>
             <li><strong>cv</strong>: Affiche le cv</li>
             <li><strong>clear</strong>: Nettoyer le terminal</li>
           </ul>`,
@@ -17,16 +17,18 @@ const commandDetails = [
             <li>
                 <strong> Formation Développeur Fullstack JavaScript : </strong>
                 <p>
-                    <a href=" https://oclock.io/formations/developpeur-web-fullstack-javascript">Ecole O'Clock</a>
+                    <a href=" https://oclock.io/formations/developpeur-web-fullstack-javascript">Ecole O'Clock</a> : Labellisée grande école du numérique
                 </p>
                 <p>mars 2021 - sept. 2021  </p>
             </li>
+            <br>
             <li>
                 <strong>Bac S</strong>
                 <p>2014</p>
             </li>
         </ul>
     </div>
+    <br>
     <h2>Expérience professionnelle</h2>
     <div class="cv__container">
         <p><strong>Opérateur de fabrication</strong></p>
@@ -75,7 +77,7 @@ const commandDetails = [
         </tr>
         <tr>
             <td>Projet de fin d'étude</td>
-            <td>Backend</td>
+            <td>Lead Dev Backend</td>
             <td>Coming soon</td>
             <td>En cours</td>
         </tr>
@@ -96,7 +98,7 @@ const commandDetails = [
   },
   {
     command: 'theme',
-    html: '<p>Coming soon</p>',
+    html: '<p><strong>options: </strong>light / matrix / dark</p>',
   },
   {
     command: 'clear',
@@ -173,10 +175,10 @@ const app = {
     // Handle backspace
     if (event.keyCode === 13) {
       app.commandInstructionHandler(inputValue);
-    } else if (event.code === 'Backspace' && app.caractCount > 0) {
+    } else if (event.keyCode === 8 && app.caractCount > 0) {
       app.caractCount -= 1;
       caretPosition.style.transform = `translateX(${(app.caractCount * 0.6).toString()}rem)`;
-    } else if (event.code === 'Backspace' && app.caractCount === 0) {
+    } else if (event.keyCode === 8 && app.caractCount === 0) {
       app.caractCount = 0;
     } else {
       // Move when typing
@@ -188,11 +190,41 @@ const app = {
   // Read the input and handle commands
   commandInstructionHandler(inputValue) {
     // remove spaces from the input value
-    const command = inputValue.split(' ').join('');
+    const command = inputValue.split(' ').join('').toLowerCase();
+    // eslint-disable-next-line no-constant-condition
+    if (command === 'themedark' || command === 'themelight' || command === 'themematrix') {
+      document.querySelector('.terminal__body__input').remove();
+      app.terminalHistory(inputValue);
+      this.themeHandler(command);
+    } else {
     // Create an history of the input
     // delete terminal__body__input and childs
-    document.querySelector('.terminal__body__input').remove();
-    // Create all needed elements
+      document.querySelector('.terminal__body__input').remove();
+
+      // Draw terminalHistory
+      app.terminalHistory(inputValue);
+
+      // Find what to print in a printList + default error
+      const commandDetail = commandDetails.find((element) => element.command === command);
+      const commandResult = document.createElement('div');
+      if (!commandDetail) {
+        const commandError = document.createElement('p');
+        commandError.textContent = `${inputValue}: Command not found. Use 'help' to see available commands.`;
+        document.querySelector('.terminal__body').appendChild(commandError);
+      } else if (command === 'clear') {
+        document.querySelector('.terminal__body').innerHTML = '';
+      } else {
+        commandResult.innerHTML = commandDetail.html;
+        document.querySelector('.terminal__body').appendChild(commandResult);
+      }
+    }
+    // Draw a new firstname@lastname > input
+    app.caractCount = 0;
+    app.init();
+  },
+
+  // Draw the command who has been typed
+  terminalHistory(inputValue) {
     const terminalHistory = document.createElement('div');
     terminalHistory.classList.add('terminal_history');
     const nameHistory = document.createElement('p');
@@ -204,24 +236,33 @@ const app = {
     document.querySelector('.terminal__body').appendChild(terminalHistory);
     terminalHistory.appendChild(nameHistory);
     terminalHistory.appendChild(commandHistory);
+  },
 
-    // Find what to print in a printList + default error
-    const commandDetail = commandDetails.find((element) => element.command === command);
-    const commandResult = document.createElement('div');
-    if (!commandDetail) {
-      const commandError = document.createElement('p');
-      commandError.textContent = `${inputValue}: Command not found. Use 'help' to see available commands.`;
-      document.querySelector('.terminal__body').appendChild(commandError);
-    } else if (command === 'clear') {
-      document.querySelector('.terminal__body').innerHTML = '';
-    } else {
-      commandResult.innerHTML = commandDetail.html;
-      document.querySelector('.terminal__body').appendChild(commandResult);
+  // Close terminal and show a funny img
+  closeTerminal() {
+    document.querySelector('body').innerHTML = '';
+    const memeImg = document.createElement('div');
+    memeImg.classList.add('meme__img');
+    document.querySelector('body').appendChild(memeImg);
+  },
+
+  themeHandler(theme) {
+    switch (theme) {
+      case 'themelight':
+
+        break;
+
+      case 'themematrix':
+
+        break;
+
+      case 'themedark':
+
+        break;
+
+      default:
+        break;
     }
-
-    // Draw a new firstname@lastname > input
-    app.caractCount = 0;
-    app.init();
   },
 
   // Events list
@@ -232,6 +273,8 @@ const app = {
     document.querySelector('.terminal__header').addEventListener('click', app.makeCaretUnfocused);
     // Event listener when typing in the terminal input
     document.querySelector('.command-input').addEventListener('keydown', app.typingInCommandInput);
+    // Event listener to close terminal
+    document.querySelector('.fake-button__close').addEventListener('click', app.closeTerminal);
   },
 };
 
