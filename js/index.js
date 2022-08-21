@@ -3,7 +3,7 @@ const commandDetails = [
     command: 'help',
     html: `<ul>
             <li><strong>a-propos</strong>: Qui suis-je ?</li>
-            <li><strong>projets</strong>: Liste des projets sur lesquelles j'ai travaillé</li>
+            <li><strong>projets</strong>: Liste des projets sur lesquels j'ai travaillé</li>
             <li><strong>theme &#60option&#62</strong>: Changer le thème du terminal</li>
             <li><strong>cv</strong>: Affiche le cv</li>
             <li><strong>clear</strong>: Nettoyer le terminal</li>
@@ -19,7 +19,7 @@ const commandDetails = [
                 <p>
                     <a href=" https://oclock.io/formations/developpeur-web-fullstack-javascript">Ecole O'Clock</a> : Labellisée grande école du numérique
                 </p>
-                <p>mars 2021 - sept. 2021  </p>
+                <p>mars 2022 - sept. 2022  </p>
             </li>
             <br>
             <li>
@@ -52,7 +52,7 @@ const commandDetails = [
     <li><strong>Date de naissance:</strong> 15/02/1996</li>
     <li><strong>Stack:</strong> HTML/CSS - JS -  Node - SQL & NoSQL</li>
 </ul>
-<p class="a-propos__text">Développeur fullstack avec une appétence pour les techniques backend, je recherche un poste, en France ou à l'étranger, qui me permettra d'améliorer mes skills et d'en développer de nouveaux.  </p>
+<p class="a-propos__text">Développeur fullstack avec une appétence pour les techniques backend, je recherche un poste, en France ou à l'étranger, qui me permettra d'améliorer mes compétences et d'en développer de nouvelles.  </p>
 <ul class="a-propos__links">
     <li><a href="https://github.com/Maxime-Turin"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" alt="github"></a></li>
     <li><a href="www.linkedin.com/in/maxime-turin"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt="linkedin"></a></li>
@@ -247,17 +247,65 @@ const app = {
   },
 
   themeHandler(theme) {
+    const root = document.querySelector(':root');
+    const logo = document.querySelector('.terminal__header__logo');
+    const body = document.querySelector('body');
     switch (theme) {
       case 'themelight':
+        body.style.background = 'no-repeat linear-gradient(132deg, rgba(247,135,100,1) 0%, rgba(9,9,121,1) 100%)';
+        logo.style.background = 'url("../img/termimaxLogo.png") center no-repeat';
+        logo.style.backgroundSize = 'cover';
+        root.style.setProperty('--main', 'rgb(222, 221, 228, 0.3)');
+        root.style.setProperty('--secondary', 'rgb(226, 216, 247, 0.3)');
+        root.style.setProperty('--border', 'none');
+        root.style.setProperty('--button-border', 'lightgray');
+        root.style.setProperty('--name', '#736ced');
+        root.style.setProperty('--history-color', '#A0D2DB');
+        root.style.setProperty('--table-border', 'rgb(226, 216, 247, 0.3)');
+        root.style.setProperty('--strong', '#F2E94E');
+        root.style.setProperty('--terminal-title', 'white');
+        root.style.setProperty('--reduce-button', 'green');
+        root.style.setProperty('--enlarge-button', 'orangered');
+        root.style.setProperty('--close-button', 'red');
 
         break;
 
       case 'themematrix':
+        logo.style.background = 'url("../img/neo.png") center no-repeat';
+        logo.style.backgroundSize = '2rem';
+        body.style.background = 'url("../img/matrix.gif") center no-repeat';
+        body.style.backgroundSize = 'cover';
+        root.style.setProperty('--main', 'transparent');
+        root.style.setProperty('--secondary', 'transparent');
+        root.style.setProperty('--border', 'none');
+        root.style.setProperty('--button-border', 'black');
+        root.style.setProperty('--name', 'green');
+        root.style.setProperty('--history-color', 'green');
+        root.style.setProperty('--table-border', 'green');
+        root.style.setProperty('--strong', 'green');
+        root.style.setProperty('--terminal-title', 'green');
+        root.style.setProperty('--reduce-button', 'black');
+        root.style.setProperty('--enlarge-button', 'black');
+        root.style.setProperty('--close-button', 'black');
 
         break;
 
       case 'themedark':
-
+        body.style.background = 'no-repeat linear-gradient(132deg, rgba(247,135,100,1) 0%, rgba(9,9,121,1) 100%)';
+        logo.style.background = 'url("../img/termimaxLogo.png") center no-repeat';
+        logo.style.backgroundSize = 'cover';
+        root.style.setProperty('--main', '#131b23');
+        root.style.setProperty('--secondary', '#090d11');
+        root.style.setProperty('--border', 'black');
+        root.style.setProperty('--button-border', 'white');
+        root.style.setProperty('--name', 'rgb(114, 114, 212)');
+        root.style.setProperty('--history-color', '#c8553d');
+        root.style.setProperty('--table-border', '#474747');
+        root.style.setProperty('--strong', 'rgb(231, 64, 64)');
+        root.style.setProperty('--terminal-title', 'white');
+        root.style.setProperty('--reduce-button', 'green');
+        root.style.setProperty('--enlarge-button', 'orangered');
+        root.style.setProperty('--close-button', 'red');
         break;
 
       default:
