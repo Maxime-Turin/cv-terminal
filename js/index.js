@@ -170,13 +170,14 @@ const app = {
     // Get caret div
     const caretPosition = document.querySelector('.command-input-caret');
     const inputValue = document.querySelector('.command-input').value;
+    console.log(event.keyCode);
     // Handle backspace
     if (event.keyCode === 13) {
       app.commandInstructionHandler(inputValue);
-    } else if (event.code === 'Backspace' && app.caractCount > 0) {
+    } else if (event.keyCode === 8 && app.caractCount > 0) {
       app.caractCount -= 1;
       caretPosition.style.transform = `translateX(${(app.caractCount * 0.6).toString()}rem)`;
-    } else if (event.code === 'Backspace' && app.caractCount === 0) {
+    } else if (event.keyCode === 8 && app.caractCount === 0) {
       app.caractCount = 0;
     } else {
       // Move when typing
@@ -188,7 +189,7 @@ const app = {
   // Read the input and handle commands
   commandInstructionHandler(inputValue) {
     // remove spaces from the input value
-    const command = inputValue.split(' ').join('');
+    const command = inputValue.split(' ').join('').toLowerCase();
     // Create an history of the input
     // delete terminal__body__input and childs
     document.querySelector('.terminal__body__input').remove();
