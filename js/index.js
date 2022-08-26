@@ -4,7 +4,7 @@ const commandDetails = [
     html: `<ul>
             <li><strong>a-propos</strong>: Qui suis-je ?</li>
             <li><strong>projets</strong>: Liste des projets sur lesquels j'ai travaillé</li>
-            <li><strong>theme &#60option&#62</strong>: Changer le thème du terminal</li>
+            <li><strong>theme &#60option&#62</strong>: Changer le thème du terminal (light, dark, matrix)</li>
             <li><strong>cv</strong>: Affiche le cv</li>
             <li><strong>clear</strong>: Nettoyer le terminal</li>
           </ul>`,
