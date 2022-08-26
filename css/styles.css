@@ -1,36 +1,53 @@
+:root {
+    --main: #131b23;
+    --secondary: #090d11;
+    --border: black;
+    --text: white;
+    --button-border: white;
+    --name: rgb(114, 114, 212);
+    --caret-color: white;
+    --history-color: #c8553d;
+    --table-border: #474747;
+    --strong: rgb(231, 64, 64);
+    --terminal-title: white;
+    --reduce-button: green;
+    --enlarge-button: orangered;
+    --close-button: red;
+
+}
+
 body {
     overflow: hidden;
     height: 100vh;
-    background: rgb(247,135,100);
     background: no-repeat linear-gradient(132deg, rgba(247,135,100,1) 0%, rgba(9,9,121,1) 100%);
     display: flex;
-    color: white;
+    color: var(--text);
     font-family: 'Ubuntu Mono', monospace;
     font-size: 1.2rem;
 }
 
 .terminal {
-    border: 0.15rem solid black;
+    border: 0.15rem solid var(--border);
     border-radius: 5px;
     margin:auto;
     width: 70vw;
     height: 70vh;
     display: flex;
     flex-direction: column;
-    background-color: #131b23;
+    background-color: var(--main);
     overflow-x: hidden;
     
 }
 
 /* CSS Terminal header */
 .terminal__header {
-    border-bottom: 0.15rem solid black;
+    border-bottom: 0.15rem solid var(--border);
     padding: 0.2rem;
     margin: none;
     display: flex;
     justify-content: space-between;
     border-radius: 5px, 5px;
-    background-color: #090d11; 
+    background-color: var(--secondary); 
 }
 
 .terminal__header__logo {
@@ -39,10 +56,11 @@ body {
     width: 2rem;
     height: 2rem;
     background: url("../img/termimaxLogo.png") center no-repeat;
-    background-size: 2rem;
+    background-size: cover;
 }
 
 .terminal__header__title {
+    color: var(--terminal-title);
     font-weight: bold;
     align-self: center;
     font-size: 1.5rem;
@@ -54,7 +72,7 @@ body {
 }
 
 .fake-button {
-    border: 0.15rem solid white;
+    border: 0.15rem solid var(--button-border);
     border-radius: 50%;
     padding: 0.5rem;
     margin: 0.5rem;
@@ -63,15 +81,19 @@ body {
 }
 
 .fake-button__reduce {
-    background-color: green;
+    background-color: var(--reduce-button);
 }
 
 .fake-button__enlarge {
-    background-color: orangered;
+    background-color: var(--enlarge-button);
 }
 
 .fake-button__close {
-    background-color: red;
+    background-color: var(--close-button);
+}
+
+.fake-button__close:hover {
+    cursor: pointer;
 }
 
 /*CSS terminal body*/
@@ -84,12 +106,12 @@ body {
 }
 
 .terminal__body::-webkit-scrollbar {
-    background-color: #090d11;
+    background-color: var(--secondary);
 }
 
 .terminal__body::-webkit-scrollbar-thumb {
-    background-color: #131b23;
-    box-shadow: inset 0.15rem 0px 3px 1px #090d11;
+    background-color: var(--main);
+    box-shadow: inset 0.15rem 0px 3px 1px var(--secondary);
 }
 
 /*CSS command input*/
@@ -102,11 +124,12 @@ body {
 }
 
 .name {
-    color: rgb(114, 114, 212);
+    color: var(--name);
     
 }
 
 .command-input {
+    color: var(--text);
     margin-left: 0.2rem;
     flex-grow: 1;
     border: none;
@@ -116,7 +139,7 @@ body {
 }
 
 .command-input:focus {
-    color: #fff;
+    color: var(--text);
     border: none;
     border-color: transparent;
     outline: none;
@@ -131,9 +154,10 @@ body {
 }
 
 .command-input-caret {
+    color: var(--text);
     position: absolute;
     transform: translateX(0rem);
-    border: 0.15rem solid white;
+    border: 0.15rem solid var(--caret-color);
     margin-left: 0.2rem;
     animation: blinker 1s linear infinite;
 }
@@ -153,11 +177,11 @@ body {
 }
 
 .name_history {
-    color: rgb(114, 114, 212);
+    color: var(--name);
 }
 
 .command_history {
-    color: #c8553d;
+    color: var(--history-color);
     margin-left: 0.2rem;
 }
 
@@ -180,6 +204,16 @@ body {
     padding-left: 1rem;
 }
 
+/* CSS on img when closing terminal */
+
+.meme__img {
+    background: url(../img/meme.jpg) center no-repeat;
+    background-size: 30rem;
+    margin: auto;
+    width: 30rem;
+    height: 30rem;
+}
+
 /*CSS on html elements*/
 h2 {
     font-size: 2rem;
@@ -187,7 +221,7 @@ h2 {
 }
 
 strong {
-    color: rgb(231, 64, 64);
+    color: var(--strong);
 }
 
 a {
@@ -201,12 +235,12 @@ table {
 }
 
 th {
-    border: 0.15rem solid #474747;
+    border: 0.15rem solid var(--table-border);
     padding: 0.5rem;
 }
 
 td {
-    border: 0.15rem solid #474747;
+    border: 0.15rem solid var(--table-border);
     padding: 0.5rem;
 }
 
