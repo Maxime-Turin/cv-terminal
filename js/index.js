@@ -55,7 +55,7 @@ const commandDetails = [
 <p class="a-propos__text">Développeur fullstack avec une appétence pour les techniques backend, je recherche un poste, en France ou à l'étranger, qui me permettra d'améliorer mes compétences et d'en développer de nouvelles.  </p>
 <ul class="a-propos__links">
     <li><a href="https://github.com/Maxime-Turin"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" alt="github"></a></li>
-    <li><a href="www.linkedin.com/in/maxime-turin"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt="linkedin"></a></li>
+    <li><a href="https://www.linkedin.com/in/maxime-turin"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt="linkedin"></a></li>
     <li><a href="mailto:maxime.turin@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="gmail"></a></li>
 </ul>`,
   },
