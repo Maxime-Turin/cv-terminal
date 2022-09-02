@@ -31,15 +31,26 @@ const commandDetails = [
     <br>
     <h2>Expérience professionnelle</h2>
     <div class="cv__container">
+        <p><strong>Amical Football - Projet de fin de formation</strong></p>
+        <p>O'Clock - Août 2022 - Remote</p>
+        <p>
+            <ul>
+            <li>- Conception </li>
+            <li>- Gestion base de données PostgreSQL</li>
+            <li>- API Node / Express</li>
+            <li>- Déploiement</li>
+        </ul>
+        </p>
+        <br>
         <p><strong>Opérateur de fabrication</strong></p>
         <p><a href="https://www.linkedin.com/company/edilians/">EDILIANS</a> . CDI</p>
         <p>nov. 2017 - mai 2021</p>
         <p>Bourgogne-Franche-Comté, France</p>
         <p>
             <ul>
-            <li>Rigueur : Contrôle qualité  à chaque étape de la fabrication du produit</li>
-            <li>Exigence : Remplacement du personnel laboratoire pendant congés pour les analyses normes NF</li>
-            <li>Flexibilité: Travail posté</li>
+            <li>- Rigueur : Contrôle qualité  à chaque étape de la fabrication du produit</li>
+            <li>- Exigence : Remplacement du personnel laboratoire pendant congés pour les analyses normes NF</li>
+            <li>- Flexibilité: Travail posté</li>
         </ul>
         </p>
     </div>`,
