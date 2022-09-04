@@ -183,7 +183,6 @@ const app = {
     // Get caret div
     const caretPosition = document.querySelector('.command-input-caret');
     const inputValue = document.querySelector('.command-input').value;
-    console.log(event.keyCode);
     // Handle backspace
     if (event.keyCode === 13) {
       app.commandInstructionHandler(inputValue);
