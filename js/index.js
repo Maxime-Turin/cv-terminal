@@ -142,9 +142,7 @@ const keyCodeException = [
   35,
   36,
   37,
-  38,
   39,
-  40,
   44,
   45,
   91,
@@ -174,8 +172,11 @@ const keyCodeException = [
 
 const app = {
   caractCount: 0,
+  commandMemory: [],
+  positionInMemory: 0,
 
   init() {
+    app.positionInMemory = 0;
     app.makeTerminalInput();
     app.makeCaretFocused();
     app.listeners();
@@ -221,20 +222,51 @@ const app = {
   },
 
   // Typing function : Move the caret when typing
+  // eslint-disable-next-line consistent-return
   typingInCommandInput(event) {
-    // TODO : add exeptions (suppr, maj, tab, etc)
     // Get caret div
     const caretPosition = document.querySelector('.command-input-caret');
     const inputValue = document.querySelector('.command-input').value;
-    console.log(event.keyCode);
-    // Handle backspace
+    // Enter
     if (event.keyCode === 13) {
-      app.commandInstructionHandler(inputValue);
+      app.commandMemoryHandler(inputValue);
+      // Handle backspace
     } else if (event.keyCode === 8 && app.caractCount > 0) {
       app.caractCount -= 1;
       caretPosition.style.transform = `translateX(${(app.caractCount * 0.6).toString()}rem)`;
     } else if (event.keyCode === 8 && app.caractCount === 0) {
       app.caractCount = 0;
+      // Up
+    } else if (event.keyCode === 38) {
+      app.positionInMemory += 1;
+      const commandPosition = app.commandMemory.length - app.positionInMemory;
+      if (commandPosition < 0) {
+        app.positionInMemory -= 1;
+        return commandPosition;
+      }
+      const commandToWrite = app.commandMemory[commandPosition];
+      document.querySelector('.command-input').value = `${commandToWrite}`;
+      app.caractCount = commandToWrite.length;
+      caretPosition.style.transform = `translateX(${(app.caractCount * 0.6).toString()}rem)`;
+      // Down
+    } else if (event.keyCode === 40) {
+      app.positionInMemory -= 1;
+      if (app.positionInMemory === 0) {
+        document.querySelector('.command-input').value = '';
+        app.caractCount = 0;
+        caretPosition.style.transform = `translateX(${(app.caractCount * 0.6).toString()}rem)`;
+        return app.caractCount;
+      }
+      const commandPosition = app.commandMemory.length - app.positionInMemory;
+      if (commandPosition > app.commandMemory.length - 1) {
+        app.positionInMemory += 1;
+        return commandPosition;
+      }
+      const commandToWrite = app.commandMemory[commandPosition];
+      document.querySelector('.command-input').value = `${commandToWrite}`;
+      app.caractCount = commandToWrite.length;
+      caretPosition.style.transform = `translateX(${(app.caractCount * 0.6).toString()}rem)`;
+      // Non-char key
     } else if (keyCodeException.includes(event.keyCode)) {
       return null;
     } else {
@@ -244,11 +276,22 @@ const app = {
     }
   },
 
+  commandMemoryHandler(inputValue) {
+    // Add command in memory array
+    app.commandMemory.push(inputValue);
+    for (let i = 0; i < app.commandMemory.length; i += 1) {
+      if (app.commandMemory[i] === app.commandMemory[i + 1]) {
+        app.commandMemory.splice(i, 1);
+      }
+    }
+    console.log(`after ${app.commandMemory}`);
+    this.commandInstructionHandler(inputValue);
+  },
+
   // Read the input and handle commands
   commandInstructionHandler(inputValue) {
     // remove spaces from the input value
     const command = inputValue.split(' ').join('').toLowerCase();
-    // eslint-disable-next-line no-constant-condition
     if (command === 'themedark' || command === 'themelight' || command === 'themematrix') {
       document.querySelector('.terminal__body__input').remove();
       app.terminalHistory(inputValue);
