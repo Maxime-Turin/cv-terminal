@@ -284,7 +284,6 @@ const app = {
         app.commandMemory.splice(i, 1);
       }
     }
-    console.log(`after ${app.commandMemory}`);
     this.commandInstructionHandler(inputValue);
   },
 
