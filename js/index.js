@@ -33,6 +33,7 @@ const commandDetails = [
     <div class="cv__container">
         <p><strong>Amical Football - Projet de fin de formation</strong></p>
         <p>O'Clock - Août 2022 - Remote</p>
+        <p><a href="https://github.com/Maxime-Turin/amical_football">Github</a></p>
         <p>
             <ul>
             <li>- Conception </li>
@@ -87,21 +88,15 @@ const commandDetails = [
             <td>Terminé</td>
         </tr>
         <tr>
-            <td>Projet de fin d'étude</td>
+            <td>Projet de fin d'étude : Amical Football</td>
             <td>Lead Dev Backend</td>
-            <td>Coming soon</td>
+            <td><a href="https://github.com/Maxime-Turin/amical_football">Github</a></td>
             <td>En cours</td>
         </tr>
         <tr>
             <td>csv_to_pdf</td>
             <td>All</td>
             <td><a href="https://github.com/Maxime-Turin/csv_to_pdf">Github</a></td>
-            <td>En cours</td>
-        </tr>
-        <tr>
-            <td>search_administrator</td>
-            <td>All</td>
-            <td><a href="https://github.com/Maxime-Turin/search-administrator">Github</a></td>
             <td>En cours</td>
         </tr>
     </tbody>
